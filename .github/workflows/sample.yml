@@ -1,0 +1,27 @@
+name: Web Server Setup
+
+on: [push]
+
+jobs:
+  web_server_setup:
+    runs-on: ubuntu-latest
+    services:
+      nginx:
+        image: nginx:latest
+        ports:
+          - 8080:80
+        options: --name nginx
+      apache:
+        image: httpd:latest
+        ports:
+          - 8081:80
+        options: --name apache
+    steps:
+    - name: Print Name
+      run: echo "Hello, sivareddy"
+    - name: Wait for servers to start
+      run: sleep 10 # Adjust as needed
+    - name: Test Nginx
+      run: curl http://localhost:8080
+    - name: Test Apache
+      run: curl http://localhost:8081
