@@ -17,22 +17,24 @@ jobs:
           - 8081:80
         options: --name apache
     steps:
-    - name: Print Name
-      run: echo "Hello, sivareddy"
-    - name: Wait for servers to start
-      run: sleep 10 # Adjust as needed
-    - name: Test Nginx
-      run: curl http://localhost:8080
-    - name: Test Apache
-      run: curl http://localhost:8081
-    - name: Execute Shell Command
-      run: |
-        echo "This is a Unix shell command."
-        ls -l
-    - name: Execute Windows Command
-    
-      runs-on: windows-latest
-      shell: cmd
-      run: |
-        echo This is a Windows command.
-        dir
+      - name: Print Name
+        run: echo "Hello, sivareddy"
+      - name: Wait for servers to start
+        run: sleep 10 # Adjust as needed
+      - name: Test Nginx
+        run: curl http://localhost:8080
+      - name: Test Apache
+        run: curl http://localhost:8081
+      - name: Execute Shell Command
+        run: |
+          echo "This is a Unix shell command."
+          ls -l
+
+  windows_command_execution:
+    runs-on: windows-latest
+    steps:
+      - name: Execute Windows Command
+        shell: cmd
+        run: |
+          echo This is a Windows command.
+          dir
