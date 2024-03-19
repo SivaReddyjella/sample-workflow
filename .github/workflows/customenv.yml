@@ -1,0 +1,14 @@
+name: Custom Environment Variable Example
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set custom environment variable
+      run: echo "MY_NAME=my name is sivareddy" >> $GITHUB_ENV
+
+    - name: Check the custom environment variable
+      run: echo $MY_NAME
